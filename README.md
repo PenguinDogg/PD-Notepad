@@ -8,7 +8,7 @@ qmake
 ## Build Instructions
 `git clone https://github.com/PenguinDogg/PD-Notepad.git`
 
-`qmake QTTest.pr`
+`qmake QTTest.pro`
 
 `make <repo directory>`
   
