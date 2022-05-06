@@ -6,11 +6,9 @@ A lightweight notepad application written in C++
 qmake
 
 ## Build Instructions
-> git clone https://github.com/PenguinDogg/PD-Notepad.git
-
-> qmake QTTest.pro
-
-> make <repo directory>
+`git clone https://github.com/PenguinDogg/PD-Notepad.git`
+`qmake QTTest.pr`
+`make <repo directory>`
   
   ## Releases
   Coming Soon
