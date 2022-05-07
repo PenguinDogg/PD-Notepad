@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include "stdio.h"
 
 void MainWindow::on_actionOpen_triggered()
 {
@@ -41,13 +42,18 @@ void MainWindow::on_actionSave_triggered()
 {
     QFile *file = new QFile { *file_path_ };
 
+    if(!file->exists()){
+        on_actionSave_As_triggered();
+        return;
+    }
+
     if(!file->open(QFile::WriteOnly | QFile::Text)){
-        QMessageBox::warning(this, "..", "File failed to save");
+        QMessageBox::warning(this, "..", "File didn't save");
         return;
     }
 
     QTextStream out(file);
-    QString *text = new QString { ui->textEdit->toPlainText() };
+    QString *text = new QString { ui->textEdit->toHtml() };
     out << *text;
 
     file->flush();
@@ -68,12 +74,12 @@ void MainWindow::on_actionSave_As_triggered()
     QFile *file = new QFile { *file_name };
 
     if(!file->open(QFile::WriteOnly | QFile::Text)){
-        QMessageBox::warning(this, "..", "File failed to save");
+        QMessageBox::warning(this, "..", "File didn't save");
         return;
     }
 
     QTextStream out(file);
-    QString *text = new QString { ui->textEdit->toPlainText() };
+    QString *text = new QString { ui->textEdit->toHtml() };
     out << *text;
 
     file->flush();
@@ -85,11 +91,12 @@ void MainWindow::on_actionSave_As_triggered()
 }
 
 // Built in methods within Qt
-void MainWindow::on_actionCut_triggered()   {   ui->textEdit->cut();      }
-void MainWindow::on_actionCopy_triggered()  {   ui->textEdit->copy();     }
-void MainWindow::on_actionPaste_triggered() {   ui->textEdit->paste();    }
-void MainWindow::on_actionRedo_triggered()  {   ui->textEdit->redo();     }
-void MainWindow::on_actionUndo_triggered()  {   ui->textEdit->undo();     }
+void MainWindow::on_actionCut_triggered()                            {   ui->textEdit->cut();           }
+void MainWindow::on_actionCopy_triggered()                           {   ui->textEdit->copy();          }
+void MainWindow::on_actionPaste_triggered()                          {   ui->textEdit->paste();         }
+void MainWindow::on_actionRedo_triggered()                           {   ui->textEdit->redo();          }
+void MainWindow::on_actionUndo_triggered()                           {   ui->textEdit->undo();          }
+void MainWindow::on_qFontComboBox_currentFontChanged(const QFont &f) { ui->textEdit->setCurrentFont(f); }
 
 void MainWindow::on_actionAbout_Notepad_triggered() {
     QString *about = new QString[2] {
@@ -100,4 +107,36 @@ void MainWindow::on_actionAbout_Notepad_triggered() {
     QMessageBox::about(this, about[0], about[1]);
 
     delete[] about;
+}
+
+void MainWindow::on_actionBold_triggered()
+{
+    if(!bold)       { ui->textEdit->setFontWeight(QFont::Bold);     }
+    else            { ui->textEdit->setFontWeight(QFont::Normal);   }
+
+    if(!bold)       { bold = true;  }
+    else            { bold = false; }
+}
+
+void MainWindow::on_actionItalics_triggered()
+{
+    if(!italics)    { ui->textEdit->setFontItalic(true); }
+    else            { ui->textEdit->setFontItalic(false);  }
+
+    if(!italics)    { italics = true;  }
+    else            { italics = false; }
+}
+
+void MainWindow::on_actionUnderline_triggered()
+{
+    if(!underlined)    { ui->textEdit->setFontUnderline(true);    }
+    else               { ui->textEdit->setFontUnderline(false);   }
+
+    if(!underlined)    { underlined = true;  }
+    else               { underlined = false; }
+}
+
+void MainWindow::on_fontSizeWidget_currentIndexChanged(int index){
+    qreal item = fontSizeWidget->itemText(index).toInt();
+    ui->textEdit->setFontPointSize(item);
 }
