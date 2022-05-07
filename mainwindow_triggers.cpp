@@ -15,7 +15,7 @@ void MainWindow::on_actionOpen_triggered()
     QFile *file = new QFile { *file_name };
 
     if(!file->open(QFile::ReadOnly | QFile::Text)){
-        QMessageBox::warning(this, "..", "File is not open");
+        QMessageBox::warning(this, "..", "File failed to open");
         return;
     }
 
@@ -42,7 +42,7 @@ void MainWindow::on_actionSave_triggered()
     QFile *file = new QFile { *file_path_ };
 
     if(!file->open(QFile::WriteOnly | QFile::Text)){
-        QMessageBox::warning(this, "..", "File failed to open");
+        QMessageBox::warning(this, "..", "File failed to save");
         return;
     }
 
