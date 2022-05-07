@@ -3,7 +3,7 @@ A lightweight notepad application written in C++
 
 ## Installation
 
-[Download latest release](https://github.com/PenguinDogg/PD-Notepad/releases/tag/Releases) and extract files, open terminal inside directory and run ./PDNotepadepad
+[Download latest release](https://github.com/PenguinDogg/PD-Notepad/releases/tag/Releases) and extract files, open terminal inside directory and run ./PDNotepad
 
 ## Dependencies
 
