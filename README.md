@@ -19,6 +19,3 @@ qtbase5-dev
 `make <repo directory>`
 
 `./PDNotepad`
-  
-  ## Releases
-  Coming Soon
