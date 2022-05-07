@@ -66,6 +66,9 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -190,7 +193,7 @@
     <string>Redo</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+R</string>
+    <string>Ctrl+Shift+R</string>
    </property>
   </action>
   <action name="actionUndo">
@@ -202,7 +205,7 @@
     <string>Undo</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+U</string>
+    <string>Ctrl+Shift+U</string>
    </property>
   </action>
   <action name="actionAbout_Notepad">
@@ -225,6 +228,9 @@
    <property name="text">
     <string>Bold</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
   </action>
   <action name="actionItalics">
    <property name="icon">
@@ -234,6 +240,9 @@
    <property name="text">
     <string>Italics</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
   <action name="actionUnderline">
    <property name="icon">
@@ -242,6 +251,9 @@
    </property>
    <property name="text">
     <string>Underline</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
  </widget>

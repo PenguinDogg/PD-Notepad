@@ -41,8 +41,13 @@ void MainWindow::on_actionSave_triggered()
 {
     QFile *file = new QFile { *file_path_ };
 
+    if(!file->exists()){
+        on_actionSave_As_triggered();
+        return;
+    }
+
     if(!file->open(QFile::WriteOnly | QFile::Text)){
-        QMessageBox::warning(this, "..", "File failed to save");
+        QMessageBox::warning(this, "..", "File didn't save");
         return;
     }
 
@@ -68,7 +73,7 @@ void MainWindow::on_actionSave_As_triggered()
     QFile *file = new QFile { *file_name };
 
     if(!file->open(QFile::WriteOnly | QFile::Text)){
-        QMessageBox::warning(this, "..", "File failed to save");
+        QMessageBox::warning(this, "..", "File didn't save");
         return;
     }
 
@@ -85,11 +90,12 @@ void MainWindow::on_actionSave_As_triggered()
 }
 
 // Built in methods within Qt
-void MainWindow::on_actionCut_triggered()   {   ui->textEdit->cut();      }
-void MainWindow::on_actionCopy_triggered()  {   ui->textEdit->copy();     }
-void MainWindow::on_actionPaste_triggered() {   ui->textEdit->paste();    }
-void MainWindow::on_actionRedo_triggered()  {   ui->textEdit->redo();     }
-void MainWindow::on_actionUndo_triggered()  {   ui->textEdit->undo();     }
+void MainWindow::on_actionCut_triggered()                            {   ui->textEdit->cut();           }
+void MainWindow::on_actionCopy_triggered()                           {   ui->textEdit->copy();          }
+void MainWindow::on_actionPaste_triggered()                          {   ui->textEdit->paste();         }
+void MainWindow::on_actionRedo_triggered()                           {   ui->textEdit->redo();          }
+void MainWindow::on_actionUndo_triggered()                           {   ui->textEdit->undo();          }
+void MainWindow::on_qFontComboBox_currentFontChanged(const QFont &f) { ui->textEdit->setCurrentFont(f); }
 
 void MainWindow::on_actionAbout_Notepad_triggered() {
     QString *about = new QString[2] {

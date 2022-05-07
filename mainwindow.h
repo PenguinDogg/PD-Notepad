@@ -42,6 +42,8 @@ private slots:
 
     void on_actionUnderline_triggered();
 
+    void on_qFontComboBox_currentFontChanged(const QFont &f);
+
 private:
     Ui::MainWindow *ui;
     QString *file_path_;

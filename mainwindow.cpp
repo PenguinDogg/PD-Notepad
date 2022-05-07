@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFontComboBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,13 +9,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setCentralWidget((ui->textEdit));
     file_path_ = new QString;
-    QString *title = new QString{ "PD Notepad" };
-    this->setWindowTitle(*title);
-    delete title;
 
     bold = false;
     underlined = false;
     italics = false;
+
+
 }
 
 MainWindow::~MainWindow()
