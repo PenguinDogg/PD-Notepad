@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFontComboBox>
+#include <QComboBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,9 +14,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    QComboBox *fontSizeWidget;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QFontComboBox *qFontComboBox;
 
 private slots:
     void on_actionNew_triggered();
@@ -46,7 +47,10 @@ private slots:
 
     void on_qFontComboBox_currentFontChanged(const QFont &f);
 
+    void on_fontSizeWidget_currentIndexChanged(int index);
+
 private:
+    QFontComboBox *qFontComboBox;
     Ui::MainWindow *ui;
     QString *file_path_;
     bool bold, underlined, italics;

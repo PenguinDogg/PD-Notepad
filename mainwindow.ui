@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
+    <width>770</width>
     <height>580</height>
    </rect>
   </property>
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>720</width>
+     <width>770</width>
      <height>20</height>
     </rect>
    </property>
@@ -93,8 +93,6 @@
    <addaction name="actionBold"/>
    <addaction name="actionItalics"/>
    <addaction name="actionUnderline"/>
-   <addaction name="separator"/>
-   <addaction name="actionAbout_Notepad"/>
    <addaction name="separator"/>
   </widget>
   <action name="actionNew">
@@ -209,6 +207,9 @@
    </property>
   </action>
   <action name="actionAbout_Notepad">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="Resource.qrc">
      <normaloff>:/res/img/info.png</normaloff>:/res/img/info.png</iconset>
@@ -218,6 +219,9 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+A</string>
+   </property>
+   <property name="priority">
+    <enum>QAction::NormalPriority</enum>
    </property>
   </action>
   <action name="actionBold">

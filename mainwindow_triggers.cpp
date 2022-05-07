@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include "stdio.h"
 
 void MainWindow::on_actionOpen_triggered()
 {
@@ -133,4 +134,9 @@ void MainWindow::on_actionUnderline_triggered()
 
     if(!underlined)    { underlined = true;  }
     else               { underlined = false; }
+}
+
+void MainWindow::on_fontSizeWidget_currentIndexChanged(int index){
+    qreal item = fontSizeWidget->itemText(index).toInt();
+    ui->textEdit->setFontPointSize(item);
 }
