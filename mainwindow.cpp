@@ -11,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     QString *title = new QString{ "PD Notepad" };
     this->setWindowTitle(*title);
     delete title;
+
+    bold = false;
+    underlined = false;
+    italics = false;
 }
 
 MainWindow::~MainWindow()

@@ -47,7 +47,7 @@ void MainWindow::on_actionSave_triggered()
     }
 
     QTextStream out(file);
-    QString *text = new QString { ui->textEdit->toPlainText() };
+    QString *text = new QString { ui->textEdit->toHtml() };
     out << *text;
 
     file->flush();
@@ -73,7 +73,7 @@ void MainWindow::on_actionSave_As_triggered()
     }
 
     QTextStream out(file);
-    QString *text = new QString { ui->textEdit->toPlainText() };
+    QString *text = new QString { ui->textEdit->toHtml() };
     out << *text;
 
     file->flush();
@@ -100,4 +100,31 @@ void MainWindow::on_actionAbout_Notepad_triggered() {
     QMessageBox::about(this, about[0], about[1]);
 
     delete[] about;
+}
+
+void MainWindow::on_actionBold_triggered()
+{
+    if(!bold)       { ui->textEdit->setFontWeight(QFont::Bold);     }
+    else            { ui->textEdit->setFontWeight(QFont::Normal);   }
+
+    if(!bold)       { bold = true;  }
+    else            { bold = false; }
+}
+
+void MainWindow::on_actionItalics_triggered()
+{
+    if(!italics)    { ui->textEdit->setFontItalic(true); }
+    else            { ui->textEdit->setFontItalic(false);  }
+
+    if(!italics)    { italics = true;  }
+    else            { italics = false; }
+}
+
+void MainWindow::on_actionUnderline_triggered()
+{
+    if(!underlined)    { ui->textEdit->setFontUnderline(true);    }
+    else               { ui->textEdit->setFontUnderline(false);   }
+
+    if(!underlined)    { underlined = true;  }
+    else               { underlined = false; }
 }

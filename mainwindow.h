@@ -34,10 +34,17 @@ private slots:
 
     void on_actionUndo_triggered();
 
-    void on_actionAbout_Notepad_triggered();
+    void on_actionAbout_Notepad_triggered();;
+
+    void on_actionBold_triggered();
+
+    void on_actionItalics_triggered();
+
+    void on_actionUnderline_triggered();
 
 private:
     Ui::MainWindow *ui;
     QString *file_path_;
+    bool bold, underlined, italics;
 };
 #endif // MAINWINDOW_H
