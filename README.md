@@ -10,11 +10,11 @@ qtbase5-dev
 ## Build & Run Instructions
 `git clone https://github.com/PenguinDogg/PD-Notepad.git`
 
-`qmake QtTest.pro`
+`qmake PDNotepad.pro`
 
 `make <repo directory>`
 
-`./QtTest`
+`./PDNotepad`
   
   ## Releases
   Coming Soon
